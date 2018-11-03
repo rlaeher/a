@@ -1,0 +1,33 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+int XY;
+POINT xy;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+        : TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::TTimer(TObject *Sender)
+{
+        if (GetKeyState(VK_LBUTTON) < 0)
+        {
+                GetCursorPos(&xy);
+                SetCursorPos(xy.x,xy.y+30);
+        }
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::FormClick(TObject *Sender)
+{
+        T->Enabled=true;
+        T->Interval=1;
+}
+//---------------------------------------------------------------------------
